@@ -5,18 +5,7 @@ using System.Collections.Generic;
 //Console.WriteLine("Hello, World!");
 
 namespace Elements {
-    enum Element_Series  {
-        [Description("Alkali Metal")] AM,
-        [Description("Alkali Earth Metal")] AEM,
-        [Description("Transition Metal")] TM,
-        [Description("Post-Transition Metal")] PTM,
-        [Description("Metalloid")] M,
-        [Description("Halogen")] H,
-        [Description("Noble Gas")] NG,
-        [Description("Lanthanide")] L,
-        [Description("Actinide")] A,
-        [Description("Other NonMetals")] ONM
-    }
+    
 
 
 
@@ -41,6 +30,19 @@ namespace Elements {
                 
         }
 
+        enum Element_Series  {
+        [Description("Alkali Metal")] AM,
+        [Description("Alkali Earth Metal")] AEM,
+        [Description("Transition Metal")] TM,
+        [Description("Post-Transition Metal")] PTM,
+        [Description("Metalloid")] M,
+        [Description("Halogen")] H,
+        [Description("Noble Gas")] NG,
+        [Description("Lanthanide")] L,
+        [Description("Actinide")] A,
+        [Description("Other NonMetals")] ONM
+    }
+
         public class Orbital 
         {
             public static Dictionary<char, int> OrbitalConfigurations = new Dictionary<char, int>();
@@ -61,6 +63,8 @@ namespace Elements {
             
             public static string determineOrbital(int atomicNumber) {
                 int suffix = 0;
+                int split = 0;
+                int index = 0;
                 string orbital = "";
                 switch(atomicNumber) {
                     case int n when (n >= 57 && n <= 71):
@@ -79,13 +83,13 @@ namespace Elements {
                         return orbital;
                     case int n when (n >= 3 && n <= 18):
                         suffix = (atomicNumber % 8);
-                        int split = (3+18)/ 2;
+                        split = (3+18)/ 2;
                         if(atomicNumber > split) {
-                            orbital = '4'.ToString();
+                            orbital = '3'.ToString();
                         }
                         else
                         {
-                            orbital = '3'.ToString();
+                            orbital = '2'.ToString();
                         }
                         if(suffix == 3 || suffix == 4) {
                             suffix -= 2;
@@ -101,10 +105,39 @@ namespace Elements {
                             {
                                 suffix -= 4;
                             }
+                            orbital += 'p' + suffix.ToString();
                         }
                         Console.WriteLine(orbital);
                         return orbital;
+                    case int n when (n >= 19 && n <= 54):
+                        split = (19 + 54)/ 2;
+                        index = atomicNumber % 18;
+                        if(atomicNumber > split) {
+                            orbital += '5'.ToString();
+                        }
+                        else
+                        {
+                            orbital += '4'.ToString();
+                        }
+                        if(index >= 3 && index <= 12) {
+                            suffix = (atomicNumber % 10) + 1;
+                            orbital += 'd' + suffix.ToString();
+                        }
+                        else if(index > 12)
+                        {
+                            suffix = (atomicNumber % 6);
+                            if(suffix == 0) {
+                                suffix = 6;
+                            }
+                            orbital += 'p' + suffix.ToString();
+                        }
+                        else
+                        {
+                            orbital += 's' + index.ToString();
+                        } 
+                        return orbital;
                     default:
+                        
                         return "";
                 }
             }
