@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 //Console.WriteLine("Hello, World!");
 
@@ -14,6 +15,7 @@ namespace Elements {
     public class Element {
         
         public required string elementName { get; set; }
+        public required int row {get; set;}
         public required string symbol { get; set; }
         public required int Protons { get; set; }
         public required int Neutrons { get; set; }
@@ -22,12 +24,15 @@ namespace Elements {
 
         public string electronConfiguration {get{ return Orbital.determineOrbital(atomicNumber); } }
 
-        (Element_Series, Color) elementSeries {get{return categorizeElementSeries(electronConfiguration);}}
+        public (Element_Series, Color) elementSeries {get{return categorizeElementSeries(electronConfiguration);}}
+        
 
         // private Func<string, string, bool> seriesIdentifier = (electronConfiguration, identifier) => {
             
         //     return electronConfiguration.Equals(identifier) || Regex.IsMatch(electronConfiguration, Regex.Escape(identifier));
         // };
+
+        
 
         private (Element_Series, Color) categorizeElementSeries(string electronConfiguration) {
             switch(electronConfiguration) {
@@ -66,7 +71,7 @@ namespace Elements {
                 
         }
 
-        private enum Element_Series  {
+        public enum Element_Series  {
         [Description("Alkali Metal")] AM,
         [Description("Alkali Earth Metal")] AEM,
         [Description("Transition Metal")] TM,
@@ -78,6 +83,21 @@ namespace Elements {
         [Description("Actinide")] A,
         [Description("NonMetal")] NM,
     }
+    
+    public static class EnumExtensions {
+        public static string GetElementSeries(Enum es) {
+            
+            var field = es.GetType().GetField(es.ToString());
+            if(field != null) {
+                if(Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attribute) {
+                    return attribute.Description;
+                }
+            }
+            return es.ToString();
+        }
+    }
+    
+    
 
         public class Orbital 
         {
@@ -233,6 +253,7 @@ namespace Elements {
             Element Hydrogen = new Element {
                 elementName = "Hydrogen",
                 symbol = "H",
+                row = 1,
                 Protons = 1,
                 Neutrons = 0
             };
@@ -240,6 +261,7 @@ namespace Elements {
             Element Helium = new Element {
                 elementName = "Hydrogen",
                 symbol = "He",
+                row = 1,
                 Protons = 2,
                 Neutrons = 2
             };
@@ -247,6 +269,7 @@ namespace Elements {
             Element lithium = new Element {
                 elementName = "Lithium",
                 symbol = "Li",
+                row = 2,
                 Protons = 3,
                 Neutrons = 4
                 // Set other properties as needed
@@ -256,6 +279,7 @@ namespace Elements {
             Element magnesium = new Element {
                 elementName = "Magnesium",
                 symbol = "Mg",
+                row = 3,
                 Protons = 12,
                 Neutrons = 12
                 // Set other properties as needed
@@ -265,6 +289,7 @@ namespace Elements {
             Element iron = new Element {
                 elementName = "Iron",
                 symbol = "Fe",
+                row = 4,
                 Protons = 26,
                 Neutrons = 30
                 // Set other properties as needed
@@ -274,6 +299,7 @@ namespace Elements {
             Element europium = new Element {
                 elementName = "Europium",
                 symbol = "Eu",
+                row = 6,
                 Protons = 63,
                 Neutrons = 89
             };
@@ -282,6 +308,7 @@ namespace Elements {
             Element uranium = new Element {
                 elementName = "Uranium",
                 symbol = "U",
+                row = 7,
                 Protons = 92,
                 Neutrons = 146
             };
@@ -290,6 +317,7 @@ namespace Elements {
             Element chlorine = new Element {
                 elementName = "Chlorine",
                 symbol = "Cl",
+                row = 3,
                 Protons = 17,
                 Neutrons = 18
             };
@@ -298,6 +326,7 @@ namespace Elements {
             Element neon = new Element {
                 elementName = "Neon",
                 symbol = "Ne",
+                row = 2,
                 Protons = 10,
                 Neutrons = 10
             };
@@ -306,10 +335,256 @@ namespace Elements {
             Element boron = new Element {
                 elementName = "Boron",
                 symbol = "B",
+                row = 2,
                 Protons = 5,
                 Neutrons = 6
             };
+            var lanthanides = new LinkedList<Element>(new[] {
+                new Element {
+                    elementName = "Lanthanum",
+                    symbol = "La",
+                    row = 6,
+                    Protons = 57,
+                    Neutrons = 82
+                },
+                new Element {
+                    elementName = "Cerium",
+                    symbol = "Ce",
+                    row = 6,
+                    Protons = 58,
+                    Neutrons = 82
+                },
+                new Element
+                {
+                    elementName = "Praseodymium",
+                    symbol = "Pr",
+                    row = 6,
+                    Protons = 59,
+                    Neutrons = 82
+                },
+                new Element
+                {
+                    elementName = "Neodymium",
+                    symbol = "Nd",
+                    row = 6,
+                    Protons = 60,
+                    Neutrons = 84
+                    
+                },
+                new Element
+                {
+                    elementName = "Promethium",
+                    symbol = "Pm",
+                    row = 6,
+                    Protons = 61,
+                    Neutrons = 84
+                },
+                new Element
+                {
+                    elementName = "Samarium",
+                    symbol = "Sm",
+                    row = 6,
+                    Protons = 62,
+                    Neutrons = 88
+                },
+                new Element
+                {
+                    elementName = "Europium",
+                    symbol = "Eu",
+                    row = 6,
+                    Protons = 63,
+                    Neutrons = 89
+                },
+                new Element
+                {
+                    elementName = "Gadolinium",
+                    symbol = "Gd",
+                    row = 6,
+                    Protons = 64,
+                    Neutrons = 93
+                },
+                new Element
+                {
+                    elementName = "Terbium",
+                    symbol = "Tb",
+                    row = 6,
+                    Protons = 65,
+                    Neutrons = 94
+                },
+                new Element
+                {
+                    elementName = "Dysprosium",
+                    symbol = "Dy",
+                    row = 6,
+                    Protons = 66,
+                    Neutrons = 97
+                },
+                new Element
+                {
+                    elementName = "Holmium",
+                    symbol = "Ho",
+                    row = 6,
+                    Protons = 67,
+                    Neutrons = 98
+                },
+                new Element
+                {
+                    elementName = "Erbium",
+                    symbol = "Er",
+                    row = 6,
+                    Protons = 68,
+                    Neutrons = 99
+                },
+                new Element
+                {
+                    elementName = "Thulium",
+                    symbol = "Tm",
+                    row = 6,
+                    Protons = 69,
+                    Neutrons = 100
+                },
+                new Element
+                {
+                    elementName = "Ytterbium",
+                    symbol = "Yb",
+                    row = 6,
+                    Protons = 70,
+                    Neutrons = 103
+                },
+                new Element
+                {
+                    elementName = "Lutetium",
+                    symbol = "Lu",
+                    row = 6,
+                    Protons = 71,
+                    Neutrons = 104
+                },
+            });
+            var Actinides = new LinkedList<Element>(new[] {
+                new Element {
+                    elementName = "Actinium",
+                    symbol = "Ac",
+                    row = 7,
+                    Protons = 89,
+                    Neutrons = 138
+                },
+                new Element
+                {
+                    elementName = "Thorium",
+                    symbol = "Th",
+                    row = 7,
+                    Protons = 90,
+                    Neutrons = 142
+                },
+                new Element
+                {
+                    elementName = "Protactinium",
+                    symbol = "Pa",
+                    row = 7,
+                    Protons = 91,
+                    Neutrons = 140
+                },
+                new Element
+                {
+                    elementName = "Uranium",
+                    symbol = "U",
+                    row = 7,
+                    Protons = 92,
+                    Neutrons = 146
+                },
+                new Element
+                {
+                    elementName = "Neptunium",
+                    symbol = "Np",
+                    row = 7,
+                    Protons = 93,
+                    Neutrons = 144
+                },
+                new Element
+                {
+                    elementName = "Plutonium",
+                    symbol = "Pu",
+                    row = 7,
+                    Protons = 94,
+                    Neutrons = 150
+                },
+                new Element
+                {
+                    elementName = "Americium",
+                    symbol = "Am",
+                    row = 7,
+                    Protons = 95,
+                    Neutrons = 148
+                },
+                new Element
+                {
+                    elementName = "Curium",
+                    symbol = "Cm",
+                    row = 7,
+                    Protons = 96,
+                    Neutrons = 151
+                },
+                new Element
+                {
+                    elementName = "Berkelium",
+                    symbol = "Bk",
+                    row = 7,
+                    Protons = 97,
+                    Neutrons = 150
+                },
+                new Element
+                {
+                    elementName = "Californium",
+                    symbol = "Cf",
+                    row = 7,
+                    Protons = 98,
+                    Neutrons = 153
+                },
+                new Element
+                {
+                    elementName = "Einsteinium",
+                    symbol = "Es",
+                    row = 7,
+                    Protons = 99,
+                    Neutrons = 153
+                },
+                new Element
+                {
+                    elementName = "Fermium",
+                    symbol = "Fm",
+                    row = 7,
+                    Protons = 100,
+                    Neutrons = 157
+                },
+                new Element
+                {
+                    elementName = "Mendelevium",
+                    symbol = "Md",
+                    row = 7,
+                    Protons = 101,
+                    Neutrons = 157
+                },
+                new Element
+                {
+                    elementName = "Nobelium",
+                    symbol = "No",
+                    row = 7,
+                    Protons = 102,
+                    Neutrons = 157
+                },
+                new Element
+                {
+                    elementName = "Lawrencium",
+                    symbol = "Lr",
+                    row = 7,
+                    Protons = 103,
+                    Neutrons = 159
+                },
+            });
+            
             Console.WriteLine(uranium.electronConfiguration);
+            PeriodicTable.PopulateFBlock(lanthanides, Actinides);
+            PeriodicTable.printPeriodicTable("FBlock");
         }
     }
 }

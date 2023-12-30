@@ -1,0 +1,15 @@
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\bin\Debug\net8.0-windows\MS-Periodic-Table.exe
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\bin\Debug\net8.0-windows\MS-Periodic-Table.deps.json
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\bin\Debug\net8.0-windows\MS-Periodic-Table.runtimeconfig.json
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\bin\Debug\net8.0-windows\MS-Periodic-Table.dll
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\bin\Debug\net8.0-windows\MS-Periodic-Table.pdb
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\obj\Debug\net8.0-windows\MS-Periodic-Table.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\obj\Debug\net8.0-windows\MS-Periodic-Table.AssemblyInfoInputs.cache
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\obj\Debug\net8.0-windows\MS-Periodic-Table.AssemblyInfo.cs
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\obj\Debug\net8.0-windows\MS-Periodic-Table.csproj.CoreCompileInputs.cache
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\obj\Debug\net8.0-windows\MS-Periodic-Table.sourcelink.json
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\obj\Debug\net8.0-windows\MS-Periodic-Table.dll
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\obj\Debug\net8.0-windows\refint\MS-Periodic-Table.dll
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\obj\Debug\net8.0-windows\MS-Periodic-Table.pdb
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\obj\Debug\net8.0-windows\MS-Periodic-Table.genruntimeconfig.cache
+C:\Users\Mark\Documents\GitHub\MS_Periodic_Table\MS-Periodic-Table\obj\Debug\net8.0-windows\ref\MS-Periodic-Table.dll
