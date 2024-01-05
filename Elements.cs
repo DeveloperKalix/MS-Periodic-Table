@@ -134,7 +134,7 @@ namespace Elements {
                         //Console.WriteLine(orbital);
                         return orbital;
                     case int n when n <=2:
-                        orbital = '1' + 's' + n.ToString();
+                        orbital = '1' + 's'.ToString() + n.ToString();
                         //Console.WriteLine(orbital);
                         return orbital;
                     case int n when (n >= 3 && n <= 18):
@@ -187,11 +187,11 @@ namespace Elements {
                             if(suffix == 0) {
                                 suffix = 6;
                             }
-                            orbital += 'p' + suffix.ToString();
+                            orbital += 'p'.ToString() + suffix.ToString();
                         }
                         else
                         {
-                            orbital += 's' + index.ToString();
+                            orbital += 's'.ToString() + index.ToString();
                         } 
                         return orbital;
                     default:
@@ -257,9 +257,10 @@ namespace Elements {
                 Protons = 1,
                 Neutrons = 0
             };
+            Console.WriteLine(Hydrogen.electronConfiguration);
 
             Element Helium = new Element {
-                elementName = "Hydrogen",
+                elementName = "Helium",
                 symbol = "He",
                 row = 1,
                 Protons = 2,
@@ -339,6 +340,16 @@ namespace Elements {
                 Protons = 5,
                 Neutrons = 6
             };
+            PeriodicTable.PopulatePeriodicTable();
+            PeriodicTable.insertElement(boron);
+            PeriodicTable.insertElement(neon);
+            PeriodicTable.insertElement(chlorine);
+            PeriodicTable.insertElement(iron);
+            PeriodicTable.insertElement(magnesium);
+            PeriodicTable.insertElement(lithium);
+            PeriodicTable.insertElement(Hydrogen);
+            PeriodicTable.insertElement(Helium);
+
             var lanthanides = new LinkedList<Element>(new[] {
                 new Element {
                     elementName = "Lanthanum",
@@ -584,7 +595,7 @@ namespace Elements {
             
             Console.WriteLine(uranium.electronConfiguration);
             PeriodicTable.PopulateFBlock(lanthanides, Actinides);
-            PeriodicTable.printPeriodicTable("FBlock");
+            PeriodicTable.printPeriodicTable("");
         }
     }
 }

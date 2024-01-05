@@ -35,7 +35,7 @@ namespace Elements {
                 case var el when el.elementSeries.Item1 == Element.Element_Series.A:
                     return 1;
                 default: 
-                    return e.row - 1;
+                    return e.row + 1;
             }
         }
         
@@ -56,37 +56,64 @@ namespace Elements {
             else
             {
                 periodicTable[index].AddLast(e);
-                FBlock[index] =  new LinkedList<Element>(FBlock[index].OrderBy(e => e, comparer));
+                periodicTable[index] =  new LinkedList<Element>(periodicTable[index].OrderBy(e => e, comparer));
 
             }
         }
 
+        public static void printMainBlock() {
+            foreach (var r in periodicTable) {
+                if(r.Value.First != null) {
+                    Element ptr = r.Value.First.Value;
+                    Console.WriteLine($"[{Element.EnumExtensions.GetElementSeries(ptr.elementSeries.Item1)}s]\n");
+                }
+                foreach(var e in r.Value) {
+                    Console.WriteLine(e.elementName + "\n");
+                }
+            }
+        }
+
+        public static void printFBlock() {
+            foreach (var r in FBlock) {
+                if(r.Value.First != null) {
+                    Element ptr = r.Value.First.Value;
+                    Console.WriteLine($"[{Element.EnumExtensions.GetElementSeries(ptr.elementSeries.Item1)}s]\n");
+                }
+                
+                foreach(var e in r.Value) 
+                {
+                    Console.WriteLine(e.elementName + "\n");
+                }
+            }
+        }
         
 
         public static void printPeriodicTable(string command) {
             switch(command) {
                 case "FBlock":
-                    foreach (var r in FBlock) {
-                        if(r.Value.First != null) {
-                            Element ptr = r.Value.First.Value;
-                            Console.WriteLine($"[{Element.EnumExtensions.GetElementSeries(ptr.elementSeries.Item1)}]\n");
-                        }
-                        
-                        foreach(var e in r.Value) 
-                        {
-                            Console.WriteLine(e.elementName + "\n");
-                        }
-                    }
-                    
+                    printFBlock();
                     break;
                 case "Main":
+                    printMainBlock();
                     break;
                 default:
+                    printMainBlock();
+                    printFBlock();
                     break;
             }
         }
 
+        public static void PopulatePeriodicTable() {
+           periodicTable.Add(1, new LinkedList<Element>());
+           periodicTable.Add(2, new LinkedList<Element>());
+           periodicTable.Add(3, new LinkedList<Element>());
+           periodicTable.Add(4, new LinkedList<Element>());
+           periodicTable.Add(5, new LinkedList<Element>());
+           periodicTable.Add(6, new LinkedList<Element>());
+           periodicTable.Add(7, new LinkedList<Element>());
+           
 
+        }
         public static void PopulateFBlock(LinkedList<Element> Lanthanides, LinkedList<Element> Actinides) {
             FBlock.Add(0, Lanthanides);
             FBlock.Add(1, Actinides);

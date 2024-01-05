@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MS-Periodic-Table")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ea6c9af25ee2e43db970b4f04fec8813866d196")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("MS-Periodic-Table")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MS-Periodic-Table")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
